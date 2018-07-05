@@ -44,7 +44,7 @@ class CallableTemplateRenderer implements ITemplateRenderer {
 
         foreach ($this->templates as $key => $value) {
             if (!is_callable($value)) {
-                unset($this->templates[$key];
+                unset($this->templates[$key]);
             }
         }
     }

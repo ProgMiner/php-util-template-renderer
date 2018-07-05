@@ -1,7 +1,6 @@
 {
     "name": "progminer/util-template-renderer",
     "description": "Abstract Template Renderer for different template engines",
-    "version": "0.1-alpha",
     "type": "library",
     "license": "MIT",
     "authors": [

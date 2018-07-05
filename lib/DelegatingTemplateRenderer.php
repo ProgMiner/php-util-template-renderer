@@ -44,7 +44,7 @@ class DelegatingTemplateRenderer implements ITemplateRenderer {
 
         foreach ($this->templateRenderers as $key => $value) {
             if (!is_a($value, ITemplateRenderer::class, false)) {
-                unset($this->templateRenderers[$key];
+                unset($this->templateRenderers[$key]);
             }
         }
     }
