@@ -29,4 +29,6 @@ use ProgMinerUtils\TemplateRenderer\DelegatingTemplateRenderer;
 class DelegatingTemplateRendererTest extends TestCase {
 
     // TODO
+
+    public function testA() { $this->assertTrue(true); }
 }
