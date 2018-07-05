@@ -46,7 +46,11 @@ class TwigTemplateRenderer implements ITemplateRenderer {
     /**
      * {@inheritdoc}
      */
-    public function render(string $template, array $variables): string {
+    public function render(string $template, array $variables = []): string {
+        if (!$this->supports($template)) {
+            throw new \UnexpectedValueException("Template \"$template\" is not supported");
+        }
+
         return $this->twig->render($template, $variables);
     }
 

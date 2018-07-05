@@ -43,7 +43,10 @@ class DelegatingTemplateRenderer implements ITemplateRenderer {
         $this->templateRenderers = $templateRenderers;
 
         foreach ($this->templateRenderers as $key => $value) {
-            if (!is_a($value, ITemplateRenderer::class, false)) {
+            if (
+                !is_string($key) ||
+                !is_a($value, ITemplateRenderer::class, false)
+            ) {
                 unset($this->templateRenderers[$key]);
             }
         }
@@ -52,14 +55,14 @@ class DelegatingTemplateRenderer implements ITemplateRenderer {
     /**
      * {@inheritdoc}
      */
-    public function render(string $template, array $variables): string {
+    public function render(string $template, array $variables = []): string {
         foreach ($this->templateRenderers as $renderer) {
             if ($renderer->supports($template)) {
                 return $renderer->render($template, $variables);
             }
         }
 
-        throw new \RuntimeException("Tenplate \"{$template}\" is not supported");
+        throw new \RuntimeException("Template \"$template\" is not supported");
     }
 
     /**

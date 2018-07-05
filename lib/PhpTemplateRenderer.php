@@ -50,14 +50,20 @@ class PhpTemplateRenderer implements ITemplateRenderer {
     /**
      * {@inheritdoc}
      */
-    public function render(string $template, array $variables): string {
+    public function render(string $template, array $variables = []): string {
+        if (!$this->supports($template)) {
+            throw new \UnexpectedValueException("Template \"$template\" is not supported");
+        }
+
         $file = $this->fileLocator->locate($template, null, true);
 
         ob_start();
+
         (function() use($file, $variables) {
             extract($variables);
             require $file;
         })();
+
         $ret = ob_get_contents();
         ob_end_clean();
 
@@ -71,7 +77,7 @@ class PhpTemplateRenderer implements ITemplateRenderer {
         $ext = pathinfo($template, PATHINFO_EXTENSION);
 
         if (
-            'php' !== $ext &&
+            'php'   !== $ext &&
             'phtml' !== $ext
         ) {
             return false;

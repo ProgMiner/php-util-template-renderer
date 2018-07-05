@@ -22,31 +22,11 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE. */
 
-namespace ProgMinerUtils\TemplateRenderer;
+use PHPUnit\Framework\TestCase;
 
-/**
- * Interface for different template engines
- *
- * @author ProgMiner
- */
-interface ITemplateRenderer {
+use ProgMinerUtils\TemplateRenderer\DelegatingTemplateRenderer;
 
-    /**
-     * Renders template by name and provides variables to them
-     *
-     * @param string $template  Template name
-     * @param array  $variables Variables array
-     *
-     * @return string Rendered template
-     */
-    public function render(string $template, array $variables = []): string;
+class DelegatingTemplateRendererTest extends TestCase {
 
-    /**
-     * Returns whether this renderer supports the template
-     *
-     * @param string $template Template name
-     *
-     * @return bool True if this class supports the given template, false otherwise
-     */
-    public function supports(string $template): bool;
+    // TODO
 }

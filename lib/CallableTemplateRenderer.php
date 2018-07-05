@@ -43,7 +43,10 @@ class CallableTemplateRenderer implements ITemplateRenderer {
         $this->templates = $templates;
 
         foreach ($this->templates as $key => $value) {
-            if (!is_callable($value)) {
+            if (
+                !is_string($key) ||
+                !is_callable($value)
+            ) {
                 unset($this->templates[$key]);
             }
         }
@@ -52,14 +55,14 @@ class CallableTemplateRenderer implements ITemplateRenderer {
     /**
      * {@inheritdoc}
      */
-    public function render(string $template, array $variables): string {
+    public function render(string $template, array $variables = []): string {
         if (!isset($this->templates[$template])) {
-            throw new \RuntimeException("Template \"{$template}\" is not supported");
+            throw new \UnexpectedValueException("Template \"$template\" is not supported");
         }
 
         ob_start();
         
-        $this->templates[$template]($variables);
+        call_user_func($this->templates[$template], $variables);
 
         $ret = ob_get_contents();
         ob_end_clean();
