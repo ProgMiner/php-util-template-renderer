@@ -1,0 +1,33 @@
+{
+    "name": "progminer/util-template-renderer",
+    "description": "Abstract Template Renderer for different template engines",
+    "version": "0.1-alpha",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "ProgMiner",
+            "email": "eridan200@mail.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {},
+    "require-dev": {
+        "symfony/config": "^4.1",
+        "twig/twig": "2.x-dev"
+    },
+    "suggest": {
+        "twig/twig": "To use the twig template renderer",
+        "symfony/config": "To use the php template renderer"
+    },
+    "autoload": {
+        "psr-4": {
+            "ProgMinerUtils\\TemplateRenderer\\": "lib"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    }
+}
