@@ -3,6 +3,7 @@
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
 [![Build Status][ico-travis]][link-travis]
+[![Code Coverage][ico-coverage]][link-coverage]
 [![Scrutinizer Code Quality][ico-scrutinizer]][link-scrutinizer]
 [![Total Downloads][ico-downloads]][link-downloads]
 
@@ -41,11 +42,13 @@ The MIT License (MIT). Please see [License File](LICENSE.md) for more informatio
 [ico-version]: https://img.shields.io/packagist/v/progminer/util-template-renderer.svg?style=flat
 [ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat
 [ico-travis]: https://travis-ci.org/ProgMiner/php-utils-template-renderer.svg
+[ico-coverage]: https://scrutinizer-ci.com/g/ProgMiner/php-utils-template-renderer/badges/coverage.png
 [ico-scrutinizer]: https://scrutinizer-ci.com/g/ProgMiner/php-utils-template-renderer/badges/quality-score.png
 [ico-downloads]: https://img.shields.io/packagist/dt/progminer/util-template-renderer.svg?style=flat
 
 [link-packagist]: https://packagist.org/packages/progminer/util-template-renderer
 [link-travis]: https://travis-ci.org/ProgMiner/php-utils-template-renderer
+[link-coverage]: https://scrutinizer-ci.com/g/ProgMiner/php-utils-template-renderer/
 [link-scrutinizer]: https://scrutinizer-ci.com/g/ProgMiner/php-utils-template-renderer/
 [link-downloads]: https://packagist.org/packages/progminer/util-template-renderer
 [link-author]: https://github.com/ProgMiner
