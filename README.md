@@ -19,7 +19,7 @@ $ composer require progminer/util-template-renderer
 
 Library has someone classes and one interface for abstracting from template engines.
 
-[ProgMinerUtils\TemplateRenderer\ITemplateRenderer](lib/ITemplateRenderer.php) is interface for template engines drivers.
+[`ProgMinerUtils\TemplateRenderer\ITemplateRenderer`](lib/ITemplateRenderer.php) is interface for template engines drivers.
 You can use it for use drivers in your code.
 
 ## Contributing
