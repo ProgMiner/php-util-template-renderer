@@ -2,9 +2,8 @@
 
 [![Latest Version on Packagist][ico-version]][link-packagist]
 [![Software License][ico-license]](LICENSE.md)
-[![Build Status](https://travis-ci.org/ProgMiner/php-utils-template-renderer.svg?branch=master)](https://travis-ci.org/ProgMiner/php-utils-template-renderer)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/102994931eba42d8806b0f352a45bec9)](https://www.codacy.com/app/ProgMiner/php-utils-template-renderer?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=ProgMiner/php-utils-template-renderer&amp;utm_campaign=Badge_Grade)
-[![Maintainability](https://api.codeclimate.com/v1/badges/df885fefa0666d852eb1/maintainability)](https://codeclimate.com/github/ProgMiner/php-utils-template-renderer/maintainability)
+[![Build Status][ico-travis]][link-travis]
+[![Scrutinizer Code Quality][ico-scrutinizer]][link-scrutinizer]
 [![Total Downloads][ico-downloads]][link-downloads]
 
 ## Install
@@ -19,7 +18,8 @@ $ composer require progminer/util-template-renderer
 
 Library has someone classes and one interface for abstracting from template engines.
 
-See code comments for details.
+[ProgMinerUtils\TemplateRenderer\ITemplateRenderer](lib/ITemplateRenderer.php) is interface for template engines drivers.
+You can use it for use drivers in your code.
 
 ## Contributing
 
@@ -38,11 +38,15 @@ If you discover any security related issues, please email eridan200@mail.ru inst
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
 
-[ico-version]: https://img.shields.io/packagist/v/progminer/util-template-renderer.svg?style=flat-square
-[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square
-[ico-downloads]: https://img.shields.io/packagist/dt/progminer/util-template-renderer.svg?style=flat-square
+[ico-version]: https://img.shields.io/packagist/v/progminer/util-template-renderer.svg?style=flat
+[ico-license]: https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat
+[ico-travis]: https://travis-ci.org/ProgMiner/php-utils-template-renderer.svg
+[ico-scrutinizer]: https://scrutinizer-ci.com/g/ProgMiner/php-utils-template-renderer/badges/quality-score.png
+[ico-downloads]: https://img.shields.io/packagist/dt/progminer/util-template-renderer.svg?style=flat
 
 [link-packagist]: https://packagist.org/packages/progminer/util-template-renderer
+[link-travis]: https://travis-ci.org/ProgMiner/php-utils-template-renderer
+[link-scrutinizer]: https://scrutinizer-ci.com/g/ProgMiner/php-utils-template-renderer/
 [link-downloads]: https://packagist.org/packages/progminer/util-template-renderer
 [link-author]: https://github.com/ProgMiner
 [link-contributors]: ../../contributors
