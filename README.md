@@ -17,10 +17,11 @@ $ composer require progminer/util-template-renderer
 
 ## Usage
 
-The library has some classes and one interface for abstracting from template engines.
+The library has some classes and one interface for abstracting from different template engines.
 
-[`ProgMinerUtils\TemplateRenderer\ITemplateRenderer`](lib/ITemplateRenderer.php) is interface for template engines drivers.
-You can use it for use drivers in your code.
+[`ProgMinerUtils\TemplateRenderer\ITemplateRenderer`](lib/ITemplateRenderer.php) is interface for template engines abstractions. You can use it for use abstractions in your code.
+
+Library has some included abstractions: for callable templates, for PHP templates and for [Twig](http://twig.sensiolabs.org/) templates. Also, library has [`ProgMinerUtils\TemplateRenderer\DelegatingTemplateRenderer`](lib/DelegatingTemplateRenderer.php) for use several abstractions at one time.
 
 ## Contributing
 
