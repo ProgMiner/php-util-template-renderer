@@ -34,20 +34,17 @@ class CallableTemplateRenderer implements ITemplateRenderer {
     /**
      * @var callable[] Templates
      */
-    protected $templates;
+    protected $templates = [];
 
     /**
      * @param callable[] $templates Templates
      */
     public function __construct(array $templates) {
-        $this->templates = $templates;
-
-        foreach ($this->templates as $key => $value) {
-            if (
-                !is_string($key) ||
-                !is_callable($value)
-            ) {
-                unset($this->templates[$key]);
+        foreach ($templates as $key => $value) {
+            if (is_string($key) && is_callable($value)) {
+                $this->templates[$key] = $value;
+            } else {
+                throw new \InvalidArgumentException('Templates must be callable[] with string keys');
             }
         }
     }

@@ -34,20 +34,17 @@ class DelegatingTemplateRenderer implements ITemplateRenderer {
     /**
      * @var ITemplateRenderer[] Template renderers
      */
-    protected $templateRenderers;
+    protected $renderers = [];
 
     /**
-     * @param ITemplateRenderer[] $templateRenderers Template renderers
+     * @param ITemplateRenderer[] $renderers Template renderers
      */
-    public function __construct(array $templateRenderers) {
-        $this->templateRenderers = $templateRenderers;
-
-        foreach ($this->templateRenderers as $key => $value) {
-            if (
-                !is_string($key) ||
-                !is_a($value, ITemplateRenderer::class, false)
-            ) {
-                unset($this->templateRenderers[$key]);
+    public function __construct(array $renderers) {
+        foreach ($renderers as $value) {
+            if (is_a($value, ITemplateRenderer::class, false)) {
+                $this->renderers[] = $value;
+            } else {
+                throw new \InvalidArgumentException('Template renderers must be ITemplateRenderer[]');
             }
         }
     }
@@ -56,20 +53,20 @@ class DelegatingTemplateRenderer implements ITemplateRenderer {
      * {@inheritdoc}
      */
     public function render(string $template, array $variables = []): string {
-        foreach ($this->templateRenderers as $renderer) {
+        foreach ($this->renderers as $renderer) {
             if ($renderer->supports($template)) {
                 return $renderer->render($template, $variables);
             }
         }
 
-        throw new \RuntimeException("Template \"$template\" is not supported");
+        throw new \UnexpectedValueException("Template \"$template\" is not supported");
     }
 
     /**
      * {@inheritdoc}
      */
     public function supports(string $template): bool {
-        foreach ($this->templateRenderers as $renderer) {
+        foreach ($this->renderers as $renderer) {
             if ($renderer->supports($template)) {
                 return true;
             }

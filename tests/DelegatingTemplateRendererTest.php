@@ -25,10 +25,75 @@ SOFTWARE. */
 use PHPUnit\Framework\TestCase;
 
 use ProgMinerUtils\TemplateRenderer\DelegatingTemplateRenderer;
+use ProgMinerUtils\TemplateRenderer\CallableTemplateRenderer;
 
 class DelegatingTemplateRendererTest extends TestCase {
 
-    // TODO
+    public function testCanHaveNotTemplateRenderers() {
+        $this->assertInstanceOf(
+            DelegatingTemplateRenderer::class,
+            new DelegatingTemplateRenderer([])
+        );
+    }
 
-    public function testA() { $this->assertTrue(true); }
+    public function testSupportsOnlyTemplateRenderers() {
+        $this->assertInstanceOf(
+            DelegatingTemplateRenderer::class,
+            $renderer = new DelegatingTemplateRenderer([new CallableTemplateRenderer([
+                'callable' => function() { echo 'Test'; }
+            ])])
+        );
+
+        $this->assertTrue($renderer->supports('callable'));
+        $this->assertEquals($renderer->render('callable'), 'Test');
+
+        $this->expectException(\InvalidArgumentException::class);
+        new DelegatingTemplateRenderer(['']);
+    }
+
+    public function testSupportsAllTemplatesOfRenderers() {
+        $renderer = new DelegatingTemplateRenderer([
+            new CallableTemplateRenderer([
+                'callable1' => function() { echo 'Test'; }
+            ]),
+            new CallableTemplateRenderer([
+                'callable2' => function() { echo 'Test'; }
+            ])
+        ]);
+
+        $this->assertTrue($renderer->supports('callable1'));
+        $this->assertEquals($renderer->render('callable1'), 'Test');
+
+        $this->assertTrue($renderer->supports('callable2'));
+        $this->assertEquals($renderer->render('callable2'), 'Test');
+    }
+
+    public function testSupportsOnlyTemplatesOfRenderers() {
+        $renderer = new DelegatingTemplateRenderer([
+            new CallableTemplateRenderer([
+                'callable' => function() { echo 'Test'; }
+            ])
+        ]);
+
+        $this->assertTrue($renderer->supports('callable'));
+        $this->assertEquals($renderer->render('callable'), 'Test');
+
+        $this->assertFalse($renderer->supports((string) rand()));
+
+        $this->expectException(\UnexpectedValueException::class);
+        $renderer->render((string) rand());
+    }
+
+    public function testSavesOrderOfTemplateRenderers() {
+        $renderer = new DelegatingTemplateRenderer([
+            new CallableTemplateRenderer([
+                'callable' => function() { echo 'Test1'; }
+            ]),
+            new CallableTemplateRenderer([
+                'callable' => function() { echo 'Test2'; }
+            ])
+        ]);
+
+        $this->assertEquals($renderer->render('callable'), 'Test1');
+    }
 }

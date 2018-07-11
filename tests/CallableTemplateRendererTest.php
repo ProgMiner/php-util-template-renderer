@@ -32,20 +32,32 @@ class CallableTemplateRendererTest extends TestCase {
         $this->assertInstanceOf(CallableTemplateRenderer::class, new CallableTemplateRenderer([]));
     }
 
-    /**
-     * @expectedException \UnexpectedValueException
-     */
     public function testSupportsOnlyCallableTemplates() {
         $renderer = new CallableTemplateRenderer([
-            'callable' => function() { ?>ABC<?php },
-            'not-callable' => 'argh'
+            'callable' => function() { echo 'Test'; }
         ]);
 
         $this->assertTrue($renderer->supports('callable'));
-        $this->assertFalse($renderer->supports('not-callable'));
+        $this->assertEquals($renderer->render('callable'), 'Test');
 
-        $this->assertEquals($renderer->render('callable'), 'ABC');
-        $renderer->render('not-callable');
+        $this->expectException(\InvalidArgumentException::class);
+        new CallableTemplateRenderer([
+            'not-callable' => 'argh'
+        ]);
+    }
+
+    public function testSupportsOnlyProvidedTemplates() {
+        $renderer = new CallableTemplateRenderer([
+            'callable' => function() { echo 'Test'; }
+        ]);
+
+        $this->assertTrue($renderer->supports('callable'));
+        $this->assertEquals($renderer->render('callable'), 'Test');
+
+        $this->assertFalse($renderer->supports((string) rand()));
+
+        $this->expectException(\UnexpectedValueException::class);
+        $renderer->render((string) rand());
     }
 
     public function testSupportsAllTypesOfCallableTemplates() {
