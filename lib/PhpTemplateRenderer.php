@@ -31,7 +31,7 @@ use Symfony\Component\Config\Exception\FileLocatorFileNotFoundException;
 /**
  * Template renderer for PHP templates
  *
- * @author ProgMiner
+ * @author Eridan Domoratskiy
  */
 class PhpTemplateRenderer implements ITemplateRenderer {
 

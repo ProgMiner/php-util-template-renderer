@@ -27,7 +27,7 @@ namespace ProgMinerUtils\TemplateRenderer;
 /**
  * Template renderer for different template renderers
  *
- * @author ProgMiner
+ * @author Eridan Domoratskiy
  */
 class DelegatingTemplateRenderer implements ITemplateRenderer {
 

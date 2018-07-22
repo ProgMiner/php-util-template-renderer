@@ -27,7 +27,7 @@ namespace ProgMinerUtils\TemplateRenderer;
 /**
  * Template renderer for Twig templates
  *
- * @author ProgMiner
+ * @author Eridan Domoratskiy
  */
 class TwigTemplateRenderer implements ITemplateRenderer {
 

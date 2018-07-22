@@ -27,7 +27,7 @@ namespace ProgMinerUtils\TemplateRenderer;
 /**
  * Template renderer for callable templates
  *
- * @author ProgMiner
+ * @author Eridan Domoratskiy
  */
 class CallableTemplateRenderer implements ITemplateRenderer {
 

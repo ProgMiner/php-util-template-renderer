@@ -27,7 +27,7 @@ namespace ProgMinerUtils\TemplateRenderer;
 /**
  * Interface for different template engines
  *
- * @author ProgMiner
+ * @author Eridan Domoratskiy
  */
 interface ITemplateRenderer {
 
